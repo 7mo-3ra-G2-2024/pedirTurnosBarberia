@@ -1,0 +1,66 @@
+body {
+    background-color: #F5F5DC; /* Beige */
+}
+.marron {
+    background-color: #8B4513; /* Marrón */
+}
+
+.beige {
+    background-color: #F5F5DC; /* Beige */
+}
+
+.gris-claro {
+    background-color: #F0F0F0; /* Gris claro */
+}
+
+.gris {
+    background-color: #808080; /* Gris */
+}
+
+.blanco {
+    background-color: #FFFFFF; /* Blanco */
+}
+
+/* Estilos para la tabla */
+table {
+    min-height: 30vh;
+    width: 60vw;
+    border-collapse: collapse;
+    border: 2px solid #000; /* Borde de la tabla */
+    margin-top: 20px;
+}
+
+th, td {
+    width: 5vw;
+    text-align: center;
+    border: 1px solid #000; /* Borde de las celdas */
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #FFF; /* Color del texto del enlace */
+    text-decoration: none; /* Sin subrayado */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilos para los estados de disponibilidad */
+.verde {
+    background-color: #008000; /* Verde */
+}
+
+.naranja {
+    background-color: #FFA500; /* Naranja */
+}
+
+.rojo {
+    background-color: #FF0000; /* Rojo */
+}
+.tabla-marron {
+    background-color: #8B4513; /* Marrón */
+}
+
+.celda-blanca {
+    background-color: #FFFFFF; /* Blanco */
+}

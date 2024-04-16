@@ -26,14 +26,17 @@
         ?>
         <form action="pedir.php?">
             <input type="hidden" name="num" value="<?php echo $_GET["num"] ?>">
-            <input type="text" name="dni" placeholder="DNI" required>
+            <input type="text" name="Telefono" placeholder="Telefono" required>
             <input type="text" name="apellido" placeholder="Apellido" required>
             <input type="text" name="nombre" placeholder="Nombre" required>
             <input type="text" name="direccion" placeholder="Dirección" required>
-            <textarea name="motivo" placeholder="Motivo de la consulta" required></textarea>
+            <select name="Servicio">
+                <option value="Corte/Corte y barba">Corte/Corte y barba</option>
+                <option value="Color">Color</option>
+            </select>
             <select name="metodo">
-                <option name="efectivo">Efectivo</option>
-                <option name="tarjeta">Tarjeta</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="tarjeta">Tarjeta</option>
             </select>
             <input type="submit" name="submitted" value="Pedir turno">
         </form>
@@ -41,7 +44,7 @@
     <?php
         if(isset($_GET["submitted"])){
             $file = fopen("pendientes.csv", "a");
-            fwrite($file, "\n".$_GET["dni"]."|".$_GET["apellido"]."|".$_GET["nombre"]."|".$_GET["direccion"]."|".$_GET["motivo"]."|".$_GET["metodo"]);
+            fwrite($file, "\n".$_GET["Telefono"]."|".$_GET["apellido"]."|".$_GET["nombre"]."|".$_GET["direccion"]."|".$_GET["motivo"]."|".$_GET["metodo"]);
             fclose($file);
             header("Location: index.php");
         }

@@ -3,25 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turnos Barberia - Disponibilidad Horaria</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        th, td {
+            width: 5vw;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <center>
         <h1>Turnos Barberia - Disponibilidad Horaria</h1>
-        <table>
-            <tr>
-                <th>Horario</th>
-                <?php
-                $date = 1;
-                $month = 4;
-                for ($i = 0; $i < 6; $i++) {
-                    echo "<th>".$date."/".$month."</th>";
-                    $date++;
-                }
-                ?>
-            </tr>
-            <?php
+        <?php
             $file = fopen("turnos.csv", "r");
             while (!feof($file)) {
                 $data[] = explode("|", fgets($file));
@@ -30,25 +23,32 @@
 
             $hourCount = 10;
             $turnCount = 1;
+            $date = 1;
+            $month = 4;
+            echo "<table border=1 style='min-height:30vh; width:60vw;'><tr><th>Horario</th>";
+            for ($i = 0; $i < 6; $i++) {
+                echo "<th>".$date."/".$month."</th>";
+                $date++;
+            }
+            echo "</tr>";
             for ($i = 0; $i < count($data); $i++) {
                 echo "<tr>";
                 echo "<td>".$hourCount.":00</td>";
-                $currentTurnCount = $turnCount;
+                $currentTurnCount = $turnCount; // Guardar el número de turno actual
                 $hourCount = $hourCount + 2;
                 for ($j = 0; $j < 6; $j++) {
                     if ($data[$i][$j] == "disponible") {
-                        echo "<td class='verde'><a href='pedir.php?num=".$currentTurnCount."'>Solicitar</a></td>";
+                        echo "<td style='background-color:green;'><a href='pedir.php?num=".$currentTurnCount."'>Solicitar</a></td>";
                     } elseif ($data[$i][$j] == "porasignar") {
-                        echo "<td class='naranja'></td>";
+                        echo "<td style='background-color:orange'></td>";
                     } elseif ($data[$i][$j] == "nodisponible") {
-                        echo "<td class='rojo'></td>";
+                        echo "<td style='background-color:red'></td>";
                     }
-                    $currentTurnCount++;
+                    $currentTurnCount++; // Incrementar el número de turno actual
                 }
                 echo "</tr>";
             }
-            ?>
-        </table>
+        ?>
     </center>
 </body>
 </html>
